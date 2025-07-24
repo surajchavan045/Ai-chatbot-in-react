@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-const ChatForm = ({ setChatHistory }) => {
+const ChatForm = ({ chatHistory, setChatHistory, generateBotResponse }) => {
 
     const inputRef = useRef();
 
@@ -15,6 +15,8 @@ const ChatForm = ({ setChatHistory }) => {
 
     // Add "Thinking..." placeholder for the bot's response
     setTimeout(() => setChatHistory((history) => [...history, { role: "model", text: "Thinking..."}]),600);
+
+    generateBotResponse([...chatHistory, { role: "user", text: userMessage }]);
    };
 
   return (
